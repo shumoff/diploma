@@ -138,3 +138,5 @@ yarn-error.log*
 # LaTeX
 diploma/pdf/main*
 !diploma/pdf/main.pdf
+
+.idea
