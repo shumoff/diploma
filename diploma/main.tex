@@ -1,0 +1,76 @@
+\documentclass[a4paper,article,14pt]{extarticle}
+
+\usepackage{spbudiploma_tempora}
+\usepackage{amsmath}
+\usepackage{array}
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\usepackage[table]{xcolor}
+
+\usepackage{euscript}
+
+\usepackage{longtable}
+\usepackage{makecell}
+
+\usepackage[pdftex]{graphicx}
+
+\usepackage{amsthm, amssymb, amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{algpseudocode}
+
+\usepackage{scrextend}
+
+\begin{document}
+
+\input{titlepage.tex}
+
+\tableofcontents
+\pagebreak
+
+\specialsection{Введение}
+
+В условиях избытка информации, характерного для нашего времени, существенной является проблема её отбора.
+Поэтому актуальной является разработка инструментов, позволяющих упростить эту задачу.
+Рекомендательные системы призваны облегчить жизнь конечного пользователя, подстроившись под его интересы.
+Они нашли широкое применение в самых различных сферах: онлайн-торговле, стриминговых сервисах, поисковых системах, рекламе.
+Бизнес использует их для повышения привлекательности своих ресурсов или для увеличения продаж.
+В основу рекомендательных систем легли алгоритмы коллаборативной фильтрации - простые, но допускающие большое число модификаций и комбинирование с другими алгоритмами.
+
+
+\specialsection{Постановка задачи}
+\textbf{Цель работы:} разработать программное обеспечение для рекомендаций пользователю фильмов.
+
+Можно выделить следующие задачи для достижения цели работы:
+\begin{itemize}
+\item Исследовать популярные способы построения рекомендательных систем
+\item Рассмотреть различные модификации
+\item Выделить наиболее эффективный для конкретной области подход
+\item Реализовать рекомендательную систему, использующую выбранный алгоритм и оценить качество её работы
+\item Проанализировать полученные результаты
+
+\end{itemize}
+\pagebreak
+\section{Рекомендательные системы}\label{sec:recommender_systems}
+\input{recommender_systems}
+
+\pagebreak
+\section{Эффективность рекомендаций}\label{sec:algos_efficiency}
+\input{algos_efficiency}
+
+\pagebreak
+
+\begin{thebibliography}{1}
+\bibitem{resnick} Resnick P., Iacovou N., Suchak M., Bergstrom P., Riedl J. \flqq GroupLens: an open architecture for collaborative filtering of netnews\frqq. Proceedings of the 1994 ACM conference on Computer supported cooperative work, 1994, pp. 175-186.
+\bibitem{herlocker} Herlocker J., Konstan J., Borchers A., Riedl J. \flqq An algorithmic framework for performing collaborative filtering\frqq. Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval, 1999, pp. 230-237.
+\bibitem{breese} Breese J., Heckerman D., Kadie C. \flqq Empirical Analysis of Predictive Algorithms for Collaborative Filtering\frqq.  Proceedings of the Fourteenth conference on Uncertainty in artificial intelligence, 1998, pp. 43-52.
+\bibitem{z-score} Herlocker J., Webster J., Jung S., Dragunov A., Holt T., Culter T., Haerer S. \flqq A framework for collaborative information environments and unified access to distributed digital content\frqq. Proceedings of the 2nd ACM/IEEE-CS joint conference on Digital libraries, 2002. pp. 378-378.
+\bibitem{chai} Chai T. and Draxler R. \flqq Root mean square error (RMSE) or mean absolute error (MAE)? – Arguments against avoiding RMSE in the literature\frqq. Geosci. Model Dev., 7, 2014, pp. 1247–1250.
+\bibitem{l-reg} Andrew Ng \flqq Feature selection, L1 vs. L2 regularization, and rotational invariance\frqq. Proceedings of the twenty-first international conference on Machine learning, 2004, p. 78.
+\bibitem{pmf} Mnih A. and Salakhutdinov R. \flqq Probabilistic matrix factorization \frqq. Proceedings of the 20th International Conference on Neural Information Processing Systems, 2007, pp. 1257-1264.
+\bibitem{tfidf} Roelleke T. and Wang J. \flqq TF-IDF Uncovered: A Study of Theories and Probabilities \frqq. Proceedings of the 31st Annual International ACM SIGIR Conference on Research and Development in Information Retrieval, 2008, pp. 435-442.
+\bibitem{autoencoders} Baldi, Pierre \flqq Autoencoders, Unsupervised Learning and Deep Architectures \frqq. Proceedings of the 2011 International Conference on Unsupervised and Transfer Learning Workshop - Volume 27, 2011, pp. 37-50.
+\bibitem{dcg} Järvelin K., Kekäläinen J. \flqq Cumulated gain-based evaluation of IR techniques \frqq. ACM Transactions on Information Systems 20(4), 2002, pp. 422–446.
+\bibitem{dcg-log} Wang Y. Wang L., Li Y., Di H., Tie-Yan L., Wei C. \flqq A Theoretical Analysis of NDCG Type Ranking Measures \frqq. Proceedings of the 26th Annual Conference on Learning Theory - Volume 30, 2013.
+\end{thebibliography}
+\end{document}
