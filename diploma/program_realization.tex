@@ -176,7 +176,7 @@ Python -- интерпретируемый язык.
     \label{tab:pmf_params}
 \end{table}
 
-\subsubsection{Нейросеть}
+\subsubsection{Нейронная сеть}
 Архитектура нейросети представлена на рисунке~\ref{fig:nn_arch}
 \begin{figure}[h!]
 \center{\includegraphics[scale=0.2]{images/nn_arch}}
@@ -277,4 +277,19 @@ f(x) =
     \label{tab:autoencoder_params}
 \end{table}
 
+\pagebreak
+\subsection{Работа рекомендательной системы}\label{subsec:recommendations_obtaining}
+Гибридная рекомендательная система сочетает в себе две модели: коллаборативную и контентную.
+Это позволяет предлагать пользователю релевантные объекты, отбирать объекты, похожие на объект интереса, и задавать порядок ранжирования, используя знания обоих моделей.
+Процесс работы такой системы представлен на блок-схеме~\ref{fig:hybrid_system_diagram}:
 
+\vspace{1em}
+\begin{figure}[h!]
+\centering
+\begin{minipage}{0.9\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{images/hybrid_system_diagram}
+\caption{Схема гибридной рекомендательной системы}
+\label{fig:hybrid_system_diagram}
+\end{minipage}
+\end{figure}

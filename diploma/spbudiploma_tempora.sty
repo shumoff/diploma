@@ -3,7 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T2A]{fontenc}
 \usepackage[english,russian]{babel}
-\renewcommand{\rmdefault}{Tempora-TLF}
+%\renewcommand{\rmdefault}{Tempora-TLF}
 
 \usepackage{setspace}
 \onehalfspacing
@@ -20,23 +20,30 @@
     \par\bigskip\normalfont\normalsize
     \addcontentsline{toc}{section}{#1}
 }
-\setcounter{secnumdepth}{4}
-\setcounter{tocdepth}{4}
-\renewcommand\thesubsection{\S\arabic{subsection}}
-\renewcommand\thesubsubsection{\arabic{subsection}.\arabic{subsubsection}}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+%\renewcommand\thesubsection{\S\arabic{subsection}}
+%\renewcommand\thesubsubsection{\arabic{subsection}.\arabic{subsubsection}}
 
-\renewcommand\paragraph{\thesubsubsection.\arabic{paragraph}}
+%\renewcommand\paragraph{\thesubsubsection.\arabic{paragraph}}
 \usepackage{titlesec}
 
+%\titleformat{\section}
+%{\fontsize{20}{20}\bfseries}{
+%\hspace{-1.5mm}Глава \thesection. \hskip-1em}{1em}{}
+
 \titleformat{\section}
-{\fontsize{20}{20}\bfseries}{
+{\fontsize{18}{18}\bfseries}{
 \hspace{-1.5mm}Глава \thesection. \hskip-1em}{1em}{}
 
-\titleformat{\subsection}
-{\fontsize{18}{18}\bfseries}{\hspace{-0.2mm}\thesubsection}{1em}{}
+%\titleformat{\subsection}
+%{\fontsize{18}{18}\bfseries}{\hspace{-0.2mm}\thesubsection}{1em}{}
 
-\titleformat{\subsubsection}
-{\fontsize{16}{16}\bfseries}{\hspace{-0.2mm}\thesubsubsection}{1em}{}
+\titleformat{\subsection}
+{\fontsize{16}{16}\bfseries}{\hspace{-0.2mm}\thesubsection}{1em}{}
+
+%\titleformat{\subsubsection}
+%{\fontsize{16}{16}\bfseries}{\hspace{-0.2mm}\thesubsubsection}{1em}{}
 
 \titleformat{\paragraph}
 {\fontsize{14}{14}\bfseries}{\hspace{-0.2mm}\theparagraph}{1em}{}
@@ -54,11 +61,12 @@
 \renewcommand{\cftsecaftersnum}{.}
 \renewcommand{\cftsubsecaftersnum}{.}
 
-\setlength{\cftsubsecindent}{2.45em}
-\setlength{\cftparaindent}{5em}
+%\setlength{\cftsubsecindent}{2.45em}
+\setlength{\cftsubsecindent}{2.68em}
+%\setlength{\cftparaindent}{5em}
 \setlength{\cftsubsecnumwidth}{2em}
-\setlength{\cftsubsubsecnumwidth}{2em}
-\setlength{\cftparanumwidth}{3em}
+%\setlength{\cftsubsubsecnumwidth}{2em}
+%\setlength{\cftparanumwidth}{3em}
 
 \setlength{\cftbeforesecskip}{4pt}
 
