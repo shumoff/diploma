@@ -8,10 +8,11 @@ from core.models.base_model import Learner
 
 
 class SGDPMF(Learner):
-    default_params = {'n_factors': 20, 'initial_std': 0.3, 'learning_rate': 0.001, 'epochs': 150}
+    default_params = {'n_factors': 20, 'user_initial_std': 0.3, 'item_initial_std': 0.03, 'learning_rate': 0.001, 'epochs': 150}
 
     n_factors = None
-    initial_std = None
+    user_initial_std = None
+    item_initial_std = None
     learning_rate = None
     epochs = None
 
@@ -24,7 +25,7 @@ class SGDPMF(Learner):
     u_lambda = None
     v_lambda = None
 
-    params = ['n_factors', 'initial_std', 'learning_rate', 'epochs']
+    params = ['n_factors', 'user_initial_std', 'item_initial_std', 'learning_rate', 'epochs']
     real_metrics = [RMSE, NDCGScore, MAE]
     class_metrics = [F1Score, PRScore, ROCScore]
     data_fields = [
@@ -42,12 +43,12 @@ class SGDPMF(Learner):
         self.training_indices = np.arange(len(self.non_zero_elems_row_ids))
 
         self.r_std = np.nanstd(self.train_ratings_matrix)
-        self.u_lambda = (self.r_std ** 2) / (self.initial_std ** 2)
-        self.v_lambda = (self.r_std ** 2) / (self.initial_std ** 2)
+        self.u_lambda = (self.r_std ** 2) / (self.user_initial_std ** 2)
+        self.v_lambda = (self.r_std ** 2) / (self.item_initial_std ** 2)
 
         if not self.fitted:
-            self.user_embeddings = np.random.normal(0.0, self.initial_std, (self.n_factors, self.n_users))
-            self.item_embeddings = np.random.normal(0.0, self.initial_std, (self.n_factors, self.n_movies))
+            self.user_embeddings = np.random.normal(0.0, self.user_initial_std, (self.n_factors, self.n_users))
+            self.item_embeddings = np.random.normal(0.0, self.item_initial_std, (self.n_factors, self.n_movies))
 
     def train(self):
         while self.current_epoch < self.epochs:
@@ -109,7 +110,8 @@ class SGDPMF(Learner):
 if __name__ == '__main__':
     params = {
         'n_factors': 20,
-        'initial_std': 0.3,
+        'user_initial_std': 0.3,
+        'item_initial_std': 0.3,
         'learning_rate': 0.001,
         'epochs': 50,
     }
@@ -126,7 +128,8 @@ if __name__ == '__main__':
     #     'epochs': [150, 200],
     #     'n_factors': [20, 40, 80],
     #     'learning_rate': [0.001],
-    #     'initial_std': [0.3, 0.5, 1, 2, 3],
+    #     'user_initial_std': [0.3, 0.5, 1, 2, 3],
+    #     'item_initial_std': [0.3, 0.3, 0.5, 1, 2, 3],
     # })
     # model.save_model_data()
 

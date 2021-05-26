@@ -13,7 +13,8 @@ class SGDFactorization(Learner):
     epochs = None
     n_factors = None
     learning_rate = None
-    reg = None
+    user_reg = None
+    item_reg = None
 
     non_zero_elems_row_ids = None
     non_zero_elems_col_ids = None
@@ -24,7 +25,7 @@ class SGDFactorization(Learner):
     item_bias = None
     global_bias = None
 
-    params = ['epochs', 'n_factors', 'learning_rate', 'reg']
+    params = ['epochs', 'n_factors', 'learning_rate', 'user_reg', 'item_reg']
     real_metrics = [RMSE, NDCGScore, MAE]
     class_metrics = [F1Score, PRScore, ROCScore]
     data_fields = [
@@ -89,11 +90,11 @@ class SGDFactorization(Learner):
             user_embedding = self.user_embeddings[user_idx]
             item_embedding = self.item_embeddings[item_idx]
 
-            self.user_bias[user_idx] += self.learning_rate * (err - self.reg * self.user_bias[user_idx])
-            self.item_bias[item_idx] += self.learning_rate * (err - self.reg * self.item_bias[item_idx])
+            self.user_bias[user_idx] += self.learning_rate * (err - self.user_reg * self.user_bias[user_idx])
+            self.item_bias[item_idx] += self.learning_rate * (err - self.item_reg * self.item_bias[item_idx])
 
-            self.user_embeddings[user_idx] += self.learning_rate * (err * item_embedding - self.reg * user_embedding)
-            self.item_embeddings[item_idx] += self.learning_rate * (err * user_embedding - self.reg * item_embedding)
+            self.user_embeddings[user_idx] += self.learning_rate * (err * item_embedding - self.user_reg * user_embedding)
+            self.item_embeddings[item_idx] += self.learning_rate * (err * user_embedding - self.item_reg * item_embedding)
 
 
 if __name__ == '__main__':
@@ -101,7 +102,8 @@ if __name__ == '__main__':
         'epochs': 70,  # после 70 переобучается
         'n_factors': 80,
         'learning_rate': 0.01,
-        'reg': 0.1,
+        'user_reg': 0.1,
+        'item_reg': 0.01,
     }
     model = SGDFactorization(
         train_ratings=os.path.join(DATA_DIR, '1KK', 'train_ratings.csv'),
@@ -116,8 +118,9 @@ if __name__ == '__main__':
     # model.find_best_params({
     #     'epochs': [50, 100],
     #     'n_factors': [5, 10, 20, 40, 80],
-    #     'learning_rate': [0.01],
-    #     'reg': [0.05, 0.1, 0.5, 1],
+    #     'learning_rate': [0.001, 0.01, 0.1],
+    #     'user_reg': [0.01, 0.05, 0.1, 0.5, 1],
+    #     'item_reg': [0.01, 0.05, 0.1, 0.5, 1],
     # })
     # print(model.best_params)
     # model.save_model_data()

@@ -8,16 +8,17 @@ from core.models.base_model import Learner
 
 
 class ALSFactorization(Learner):
-    default_params = {'epochs': 40, 'n_factors': 100, 'reg': 6}
+    default_params = {'epochs': 40, 'n_factors': 100, 'user_reg': 6, 'item_reg': 5.5}
 
     epochs = None
     n_factors = None
-    reg = None
+    user_reg = None
+    item_reg = None
 
     user_embeddings = None
     item_embeddings = None
 
-    params = ['epochs', 'n_factors', 'reg']
+    params = ['epochs', 'n_factors', 'user_reg', 'item_reg']
     real_metrics = [RMSE, NDCGScore, MAE]
     class_metrics = [F1Score, PRScore, ROCScore]
     data_fields = [
@@ -61,7 +62,7 @@ class ALSFactorization(Learner):
                 rated_items_embeddings = self.item_embeddings[rated_items_indices]
 
                 YTY = rated_items_embeddings.T.dot(rated_items_embeddings)
-                lambdaI = np.eye(YTY.shape[0]) * self.reg
+                lambdaI = np.eye(YTY.shape[0]) * self.user_reg
 
                 self.user_embeddings[user_idx, :] = np.linalg.solve(
                     YTY + lambdaI,
@@ -76,7 +77,7 @@ class ALSFactorization(Learner):
                 watchers_embeddings = self.user_embeddings[watchers_indices]
 
                 XTX = watchers_embeddings.T.dot(watchers_embeddings)
-                lambdaI = np.eye(XTX.shape[0]) * self.reg
+                lambdaI = np.eye(XTX.shape[0]) * self.item_reg
 
                 self.item_embeddings[item_idx, :] = np.linalg.solve(
                     XTX + lambdaI,
@@ -90,7 +91,8 @@ if __name__ == '__main__':
     params = {
         'epochs': 40,
         'n_factors': 100,
-        'reg': 6,
+        'user_reg': 6,
+        'item_reg': 6.5,
     }
     model = ALSFactorization(
         train_ratings=os.path.join(DATA_DIR, '1KK', 'train_ratings.csv'),

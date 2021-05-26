@@ -42,7 +42,7 @@ recall = \frac{TP}{TP + FN}
 \end{equation}
 
 \vspace{1em}
-На таблице~\ref{tab:conf_matrix}  представлена так называемая матрица ошибок (confusion matrix), демонстрирующая смысл приведённых обозначений:
+На таблице~\ref{tab:conf_matrix} представлена так называемая матрица ошибок (confusion matrix), демонстрирующая смысл приведённых обозначений:
 
 \begin{table}[h]
 \centering
@@ -155,51 +155,11 @@ IDCG_p = \sum_{j=1}^{p}\frac{\hat{r}_{\hat{n}_j}}{\log_2 (j + 1)}
 
 \pagebreak
 \subsection{Сравнение алгоритмов}\label{subsec:algos_comparison}
-Для сравнения алгоритмов используются данные из MovieLens 20M Dataset.
-Датасет содержит 20 миллионов оценок и 465 тысяч тегов, поставленных 138 тысячами пользователей 27 тысячам фильмов.
-Обучение производилось на 1 миллионе оценок, поставленных 6 тысячами пользователей 5 тысячам фильмов.
-Примеры исходных данных приведены на таблицах~\ref{table:ratings_data},~\ref{table:tags_data}.
-
-\begin{table}[h]
-    \begin{minipage}{.5\linewidth}
-      \centering
-        \begin{tabular}{|P{1.5cm}|P{2cm}|P{2cm}|}
-            \hline
-            userId & movieId & rating\\ 
-            \hline
-            438 & 5055 & 4.0\\ 
-            \hline
-            462 & 8910 & 3.0\\ 
-            \hline
-            474 & 3793 & 4.5\\ 
-            \hline
-            559 & 518 & 2.0\\ 
-            \hline
-        \end{tabular}
-        \caption{Данные по оценкам}
-        \label{table:ratings_data}
-    \end{minipage}%
-    \begin{minipage}{.5\linewidth}
-      \centering
-        \begin{tabular}{|P{1.5cm}|P{2cm}|P{3cm}|}
-        \hline
-            userId & movieId & tag\\ 
-            \hline
-            62 & 7153 & fantasy\\ 
-            \hline
-            318 & 778 & dark comedy\\ 
-            \hline
-            424 & 1625 & plot twist\\ 
-            \hline
-            474 & 140 & journalism\\ 
-           \hline
-        \end{tabular}
-        \caption{Данные по тегам}
-        \label{table:tags_data}
-    \end{minipage} 
-\end{table}
-
+Каждая из моделей была обучена с полученными оптимальными гиперпараметрами.
+В данном параграфе приводится оценка качества алгоритмов.
 %Точность оценивается с помощью среднеквадратической ошибки и F1-меры.
+
+Отдельного внимания заслуживают метрики классификации.
 В задаче классификации определяются два класса объектов.
 Вероятность принадлежности объекта $j$ к положительному классу рассчитывается следующим образом:
 \begin{equation}
