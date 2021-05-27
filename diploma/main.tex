@@ -26,8 +26,8 @@
 \input{titlepage.tex}
 
 \tableofcontents
-\pagebreak
 
+\pagebreak
 \specialsection{Введение}
 
 В условиях избытка информации, характерного для нашего времени, существенной является проблема её отбора.
@@ -37,9 +37,12 @@
 Бизнес использует их для повышения привлекательности своих ресурсов или для увеличения продаж.
 В основу рекомендательных систем легли алгоритмы коллаборативной фильтрации - простые, но допускающие большое число модификаций и комбинирование с другими алгоритмами.
 
+На сегодняшний момент рекомендательные системы используются повсеместно, но они не предоставляют пользователю возможность самому решить, какого рода рекомендацию он хочет получить, и редко допускают явное взаимодействие между пользователем и системой.
+В работе предлагается дополнить гибридную систему, добавив в неё такую возможность.
 
+\pagebreak
 \specialsection{Постановка задачи}
-\textbf{Цель работы:} Построить рекомендательную систему, способную определять наиболее релевантные для пользователя фильмы.
+\textbf{Цель работы:} Построить рекомендательную систему, основанную на комбинации различных моделей и алгоритмов, способную определять наиболее релевантные для пользователя фильмы.
 
 Для достижения поставленной цели были сформулированы следующие задачи:
 \begin{itemize}
@@ -49,6 +52,23 @@
 \item Реализовать гибридную рекомендательную систему, использующую избранные алгоритмы.
 \item Провести сравнительный анализ полученных результатов.
 \end{itemize}
+
+\pagebreak
+\specialsection{Обзор литературы}
+Идея автоматической персонализации пользовательского опыта при работе с контентом впервые была предложена в~\cite{rich}.
+По мере развития компьютерных технологий появлялось всё больше возможностей и первым серьёзным шагом в сторону построения автоматической рекомендательной системы можно считать статью 1994 года~\cite{resnick}.
+В ней рассматривалось использование коллаборативных алгоритмов с целью помочь пользователям находить новостные статьи, которые могли бы их заинтересовать.
+
+Рекомендательные системы привлекали внимание в сфере развлечений и в 1995 году были опубликованы статьи по разработке систем для рекомендаций видео~\cite{bellcore} и музыки~\cite{ringo}, а в 1998 для рекомендаций фильмов~\cite{movielens}.
+В 2002 году публикуется статья о гибридной системе, сочетающей коллаборативные алгоритмы и контентные, для рекомендаций ресторанов~\cite{hybrid}.
+Эта статья вызвала много интереса и в 2006 году Netflix организовывает соревнование Netflix Prize.
+Команда, победившая в нём, публикует описание своего решения~\cite{netflix}, рассматривающего метод k-ближайших соседей(наиболее распространённая в то время техника) и алгоритмы матричного разложения.
+
+В начале 2000-х начал развиваться контентный подход, основанный на информационном поиске --- извлечении признаков рекомендуемых объектов.
+Этот подход хорошо описан в книге~\cite{adaptive-web}.
+
+Акцент в работе сделан на алгоритмы, основанные на разложении матриц~\cite{als, sgd}, и нейронные сети~\cite{nn}.
+За базовый подход взят алгоритм на основе косинусного сходства~\cite{resnick}.
 
 \pagebreak
 \section{Рекомендательные системы}\label{sec:recommender_systems}
@@ -62,6 +82,7 @@
 \section{Эффективность рекомендаций}\label{sec:algos_efficiency}
 \input{algos_efficiency}
 
+\pagebreak
 \specialsection{Выводы}
 В ходе работы была построена гибридная рекомендательная система.
 Получены следующие результаты:
@@ -76,31 +97,45 @@
 
 \pagebreak
 \specialsection{Заключение}
-Тут будет заключение.
-Можно развить за счёт неявного фидбека, а не только оценок, применить другие функции потерь и всё такое
+Результаты работы свидетельствуют о состоятельности рассмотренных алгоритмов для построения автоматических рекомендаций.
+Развитие работы можно направить на исследование альтернативных методов обучения моделей --- основная задача не предсказать оценку, а задать порядок ранжирования.
+Для этого стоит рассмотреть функции потерь для задач ранжирования.
+Кроме того следует обратить внимание на построение моделей, учитывающих неявное взаимодействие пользователя (просмотры, покупки, комментарии).
+Код работы доступен по ссылке: \url{https://github.com/shumoff/diploma}.
 
 \pagebreak
 
 \begin{thebibliography}{1}
+\bibitem{rich} Rich E. User modeling via stereotypes. // Cognitive Science. 1979. Vol. 3. P. 329—-354.
 \bibitem{resnick} Resnick P., Iacovou N., Suchak M., Bergstrom P., Riedl J. GroupLens: an open architecture for collaborative filtering of netnews // Proceedings of the 1994 ACM conference on Computer supported cooperative work. 1994. P. 175--186.
-\bibitem{herlocker} Herlocker J., Konstan J., Borchers A., Riedl J. An algorithmic framework for performing collaborative filtering. // Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval. 1999. P. 230--237.
-\bibitem{breese} Breese J., Heckerman D., Kadie C. Empirical Analysis of Predictive Algorithms for Collaborative Filtering //  Proceedings of the Fourteenth conference on Uncertainty in artificial intelligence. 1998. P. 43--52.
+\bibitem{bellcore} Hill W., Stead L., Rosenstein M., Furnas G. Recommending and Evaluating Choices in a Virtual Community of Use // Proceedings of the SIGCHI Conference on Human Factors in Computing Systems. 1995. P. 194--201
+\bibitem{ringo} Shardanand U., Maes P. Social Information Filtering: Algorithms for Automating "Word of Mouth" // Proceedings of the SIGCHI Conference on Human Factors in Computing Systems. 1995. P. 210--217.
+\bibitem{movielens} Dahlen B., Konstan J., Herlocker J., Good N., Borchers A., Riedl J. Jump-starting movieLens: User benefits of starting a collaborative filtering system with "dead-data" // University of Minnesota TR 98-017. 1998.
+\bibitem{hybrid} Burke, R. Hybrid Recommender Systems: Survey and Experiments // User Modeling and User-Adapted Interaction. 2002. Vol. 12. P. 331--370.
+\bibitem{netflix} Koren Y. The BellKor Solution to the Netflix Grand Prize, 2009
+\bibitem{adaptive-web} Pazzani M., Billsus D. The Adaptive Web: Methods and Strategies of Web Personalization --- Springer-Verlag Berlin Heidelberg, 2007. P. 325–-341.
+\bibitem{als} Takács G., Tikk D. Alternating Least Squares for Personalized Ranking // Proceedings of the Sixth ACM Conference on Recommender Systems. 2012. P. 83--90.
+\bibitem{sgd} Nguyen S., Kwak H., Lee S., Gim G. Using Stochastic Gradient Decent Algorithm For Incremental Matrix Factorization In Recommendation System // 20th IEEE/ACIS International Conference on Software Engineering, Artificial Intelligence, Networking and Parallel/Distributed Computing. 2019. P. 308--319.
+\bibitem{nn} Zhang S., Yao L., Sun A., Tay Y. Deep Learning Based Recommender System: A Survey and New Perspectives // ACM Computing Surveys. 2019. Vol. 52. A. 6. P. 1--38.
+
+\bibitem{herlocker} Herlocker J., Konstan J., Borchers A., Riedl J. An algorithmic framework for performing collaborative filtering // Proceedings of the 22nd annual international ACM SIGIR conference on Research and development in information retrieval. 1999. P. 230--237.
+\bibitem{breese} Breese J., Heckerman D., Kadie C. Empirical Analysis of Predictive Algorithms for Collaborative Filtering // Proceedings of the Fourteenth conference on Uncertainty in artificial intelligence. 1998. P. 43--52.
 \bibitem{z-score} Herlocker J., Webster J., Jung S., Dragunov A., Holt T., Culter T., Haerer S. A framework for collaborative information environments and unified access to distributed digital content // Proceedings of the 2nd ACM/IEEE-CS joint conference on Digital libraries. 2002. P. 378--378.
-\bibitem{chai} Chai T., Draxler R. Root mean square error (RMSE) or mean absolute error (MAE)? – Arguments against avoiding RMSE in the literature // Geosci. Model Dev.. 2014. Vol. 7. P. 1247--1250.
+\bibitem{chai} Chai T., Draxler R. Root mean square error (RMSE) or mean absolute error (MAE)? – Arguments against avoiding RMSE in the literature // Geosci. Model Dev. 2014. Vol. 7. P. 1247--1250.
 \bibitem{l-reg} Ng A. Feature selection, L1 vs. L2 regularization, and rotational invariance // Proceedings of the twenty-first international conference on Machine learning. 2004. P. 78.
 \bibitem{pmf} Mnih A., Salakhutdinov R. Probabilistic matrix factorization // Proceedings of the 20th International Conference on Neural Information Processing Systems. 2007. P. 1257--1264.
 \bibitem{tfidf} Roelleke T., Wang J. TF-IDF Uncovered: A Study of Theories and Probabilities // Proceedings of the 31st Annual International ACM SIGIR Conference on Research and Development in Information Retrieval. 2008. P. 435--442.
-\bibitem{autoencoders} Pierre B.  Autoencoders, Unsupervised Learning and Deep Architectures // Proceedings of the 2011 International Conference on Unsupervised and Transfer Learning Workshop - Volume 27. 2011. P. 37--50.
+\bibitem{autoencoders} Baldi P. Autoencoders, Unsupervised Learning and Deep Architectures // Proceedings of the 2011 International Conference on Unsupervised and Transfer Learning Workshop. 2011. Vol. 27. P. 37--50.
 \bibitem{dcg} Järvelin K., Kekäläinen J.  Cumulated gain-based evaluation of IR techniques // ACM Transactions on Information Systems 20(4). 2002. P. 422--446.
-\bibitem{dcg-log} Wang Y. Wang L., Li Y., Di H., Tie-Yan L., Wei C.  A Theoretical Analysis of NDCG Type Ranking Measures // Proceedings of the 26th Annual Conference on Learning Theory. 2013. Vol. 30.
-\bibitem{python} Python -- an open source programming language [Электронный ресурс]. — URL: https://www.python.org/
-\bibitem{numpy} NumPy -- an open source project aiming to enable numerical computing with Python [Электронный ресурс]. — URL: https://numpy.org/
-\bibitem{pandas} pandas -- an open source data analysis and manipulation tool [Электронный ресурс]. — URL: https://pandas.pydata.org/
-\bibitem{scikit-learn} scikit-learn -- free software machine learning library [Электронный ресурс]. — URL: https://scikit-learn.org/
-\bibitem{matplotlib} Matplotlib -- a comprehensive library for creating static, animated, and interactive visualizations [Электронный ресурс]. — URL: https://matplotlib.org/
-\bibitem{tensorflow} TensorFlow -- an end-to-end open source platform for machine learning [Электронный ресурс]. — URL: https://www.tensorflow.org/
-\bibitem{c-language} C -- a general-purpose, procedural computer programming language [Электронный ресурс]. — URL: https://www.iso.org/standard/74528.html/
-\bibitem{c++} C++ -- a general-purpose programming language [Электронный ресурс]. — URL: https://isocpp.org/
+\bibitem{dcg-log} Wang Y. Wang L., Li Y., Di H., Tie-Yan L., Wei C.  A Theoretical Analysis of NDCG Type Ranking Measures // Proceedings of the 26th Annual Conference on Learning Theory. 2013. Vol. 30. P. 25--54.
+\bibitem{python} Python --- an open source programming language [Электронный ресурс]. — URL: https://www.python.org/
+\bibitem{numpy} NumPy --- an open source project aiming to enable numerical computing with Python [Электронный ресурс]. — URL: https://numpy.org/
+\bibitem{pandas} pandas --- an open source data analysis and manipulation tool [Электронный ресурс]. — URL: https://pandas.pydata.org/
+\bibitem{scikit-learn} scikit-learn --- free software machine learning library [Электронный ресурс]. — URL: https://scikit-learn.org/
+\bibitem{matplotlib} Matplotlib --- a comprehensive library for creating static, animated, and interactive visualizations [Электронный ресурс]. — URL: https://matplotlib.org/
+\bibitem{tensorflow} TensorFlow --- an end-to-end open source platform for machine learning [Электронный ресурс]. — URL: https://www.tensorflow.org/
+\bibitem{c-language} C --- a general-purpose, procedural computer programming language [Электронный ресурс]. — URL: https://www.iso.org/standard/74528.html/
+\bibitem{c++} C++ --- a general-purpose programming language [Электронный ресурс]. — URL: https://isocpp.org/
 \bibitem{movielens-dataset} MovieLens 20M Dataset -- stable benchmark dataset [Электронный ресурс]. — URL: https://grouplens.org/datasets/movielens/20m/
 \bibitem{relu} Nair V., Hinton G. Rectified Linear Units Improve Restricted Boltzmann Machines Vinod Nair // Proceedings of ICML. 2010. Vol. 27. P. 807--814.
 \bibitem{dropout} Srivastava N., Hinton G., Krizhevsky A., Sutskever I., Salakhutdinov R. Dropout: A Simple Way to Prevent Neural Networks from Overfitting // The Journal of Machine Learning Research. 2014. Vol. 15. P. 1929--1958.

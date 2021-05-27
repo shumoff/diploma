@@ -60,6 +60,8 @@ Python --- интерпретируемый язык.
 \end{minipage}
 \end{figure}
 
+Код проекта доступен по ссылке: \url{https://github.com/shumoff/diploma}.
+
 \pagebreak
 \subsection{Архитектура моделей}\label{subsec:models_architecture}
 Для поиска набора гиперпараметров, дающего оптимальное качество алгоритма, использовались данные из MovieLens 20M Dataset~\cite{movielens-dataset}.
@@ -106,7 +108,8 @@ Python --- интерпретируемый язык.
     \end{minipage}
 \end{table}
 
-\subsubsection{ALS}
+%\subsubsection{ALS}
+\paragraph{ALS}
 Набор гиперпараметров модели:
 \begin{itemize}
     \item $N$ --- количество эпох обучения;
@@ -129,7 +132,8 @@ Python --- интерпретируемый язык.
 \end{table}
 
 \pagebreak
-\subsubsection{SGD}
+%\subsubsection{SGD}
+\paragraph{SGD}
 Набор гиперпараметров модели:
 \begin{itemize}
     \item $N$ --- количество эпох обучения;
@@ -153,7 +157,8 @@ Python --- интерпретируемый язык.
 \end{table}
 
 
-\subsubsection{PMF}
+%\subsubsection{PMF}
+\paragraph{PMF}
 Набор гиперпараметров модели:
 \begin{itemize}
     \item $N$ --- количество эпох обучения;
@@ -176,7 +181,8 @@ Python --- интерпретируемый язык.
     \label{tab:pmf_params}
 \end{table}
 
-\subsubsection{Нейронная сеть}
+%\subsubsection{Нейронная сеть}
+\paragraph{Нейронная сеть}
 Архитектура нейросети представлена на рисунке~\ref{fig:nn_arch}:
 \begin{figure}[h!]
 \center{\includegraphics[scale=0.2]{images/nn_arch}}
@@ -241,7 +247,8 @@ f(x) =
 \end{table}
 
 \pagebreak
-\subsubsection{Контентная модель}
+%\subsubsection{Контентная модель}
+\paragraph{Контентная модель}
 Для выделения контентных признаков объектов использовались тэги, присвоенные пользователями фильмам.
 Сначала для корпуса тэгов было построено TF-IDF пространство, а затем сжато путём кодирования автоэнкодером.
 В качестве функции активации нейрона используются ReLU и логистическая функция.
