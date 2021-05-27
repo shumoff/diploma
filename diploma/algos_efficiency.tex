@@ -8,7 +8,7 @@
 \vspace{1em}
 \textbf{Mean Absolute Error}
 
-Средняя абсолютная ошибка представляет собой сумму абсолютных разностей между прогнозами и фактическими значениями. 
+Средняя абсолютная ошибка представляет собой сумму абсолютных разностей между прогнозами и фактическими значениями:
 \begin{equation}\label{eq:mae}
 MAE = \frac{1}{|R|} \sum_{u \in U , i \in I} |r_{ui} - \hat{r_{ui}}|
 \end{equation}
@@ -17,7 +17,7 @@ MAE = \frac{1}{|R|} \sum_{u \in U , i \in I} |r_{ui} - \hat{r_{ui}}|
 \vspace{1em}
 \textbf{Root Mean Squared Error}
 
-Среднеквадратическая ошибка усиливает вклад больших ошибок, будучи чувствительной к плохим предсказаниям.
+Среднеквадратическая ошибка усиливает вклад больших ошибок, будучи чувствительной к плохим предсказаниям:
 \begin{equation}\label{eq:rmse}
 RMSE = \sqrt{\frac{1}{|R|} \sum_{u \in U , i \in I} (r_{ui} - \hat{r_{ui}})^2}
 \end{equation}
@@ -42,7 +42,7 @@ recall = \frac{TP}{TP + FN}
 \end{equation}
 
 \vspace{1em}
-На таблице~\ref{tab:conf_matrix} представлена так называемая матрица ошибок (confusion matrix), демонстрирующая смысл приведённых обозначений:
+В таблице~\ref{tab:conf_matrix} представлена так называемая матрица ошибок (confusion matrix), демонстрирующая смысл приведённых обозначений:
 
 \begin{table}[h]
 \centering
@@ -80,7 +80,7 @@ FPR = \frac{FP}{FP + TN},
 \end{equation}
 где TPR --- полнота, FPR --- доля неверно классифицированных объектов класса нерелевантных объектов.
 PR-кривая аналогично строится по координатам precision и recall.
-Примеры кривых приведены ниже на рисунках~\ref{fig:roc_curve_example} и~\ref{fig:pr_curve_example}:
+Примеры кривых приведены ниже на рисунках~\ref{fig:roc_curve_example},~\ref{fig:pr_curve_example}:
 \begin{figure}[h!]
 \centering
 \begin{minipage}{.5\textwidth}
@@ -119,7 +119,7 @@ PR-кривая аналогично строится по координата�
 
 CG представляет собой сумму истинных весов для $p$ релевантных объектов:
 \begin{equation}\label{eq:cg}
-CG_p = \sum_{j=1}^{p}\hat{r}_{n_j}
+CG_p = \sum_{j=1}^{p}\hat{r}_{n_j},
 \end{equation}
 где $\hat{r}_{n_j}$ --- истинная степень релевантности объекта на позиции $n_j$.
 
@@ -130,7 +130,7 @@ CG_p = \sum_{j=1}^{p}\hat{r}_{n_j}
 
 DCG задаётся как~\cite{dcg}:
 \begin{equation}\label{eq:dcg}
-DCG_p = \sum_{j=1}^{p}\frac{\hat{r}_{n_j}}{\log_2 (j + 1)}
+DCG_p = \sum_{j=1}^{p}\frac{\hat{r}_{n_j}}{\log_2 (j + 1)},
 \end{equation}
 где $\hat{r}_{n_j}$ --- истинная степень релевантности объекта на позиции $n_j$.
 
@@ -144,9 +144,9 @@ DCG_p = \sum_{j=1}^{p}\frac{\hat{r}_{n_j}}{\log_2 (j + 1)}
 
 Чтобы приобрести устойчивость к количеству элементов в списке - $p$, достаточно посчитать DCG для идеально отранжированного списка:
 \begin{equation}\label{eq:ndcg}
-NDCG_p = \frac{DCG_p}{IDCG_p}
+NDCG_p = \frac{DCG_p}{IDCG_p},
 \end{equation}
-где IDCG - DCG для идеально отранжированного списка
+где IDCG - DCG для идеально отранжированного списка:
 \begin{equation}\label{eq:idcg}
 IDCG_p = \sum_{j=1}^{p}\frac{\hat{r}_{\hat{n}_j}}{\log_2 (j + 1)}
 \end{equation}
@@ -165,13 +165,13 @@ IDCG_p = \sum_{j=1}^{p}\frac{\hat{r}_{\hat{n}_j}}{\log_2 (j + 1)}
 \begin{equation}
 p_{ij} =
 \begin{cases}
-    0.5 + 0.5 \frac{\hat{r}_{ij} - \hat{r}_{i}^{mean}}{\hat{r}_{i}^{max} - \hat{r}_{i}^{mean}}, & \hat{r}_{ij} - \hat{r}_{i}^{mean} >= 0 \\
-    0.5 - 0.5 \frac{\hat{r}_{ij} - \hat{r}_{i}^{mean}}{\hat{r}_{i}^{min} - \hat{r}_{i}^{mean}}, & \hat{r}_{ij} - \hat{r}_{i}^{mean} < 0
-\end{cases}\label{eq:class_proba}
+    0.5 + 0.5 \frac{\hat{r}_{ij} - \hat{r}_{i}^{\mean}}{\hat{r}_{i}^{\max} - \hat{r}_{i}^{\mean}}, & \hat{r}_{ij} - \hat{r}_{i}^{\mean} >= 0 \\
+    0.5 - 0.5 \frac{\hat{r}_{ij} - \hat{r}_{i}^{\mean}}{\hat{r}_{i}^{\min} - \hat{r}_{i}^{\mean}}, & \hat{r}_{ij} - \hat{r}_{i}^{\mean} < 0
+\end{cases}\label{eq:class_proba},
 \end{equation}
 где
 $\hat{r}_{ij}$ --- предсказанная оценка, \\
-$\hat{r}_{i}^{mean}$, $\hat{r}_{i}^{min}$, $\hat{r}_{i}^{max}$ --- средняя, минимальная и максимальная предсказанные оценки пользователя.
+$\hat{r}_{i}^{\mean}$, $\hat{r}_{i}^{\min}$, $\hat{r}_{i}^{\max}$ --- средняя, минимальная и максимальная предсказанные оценки пользователя.
 
 На тестовом множестве считается, что объект относится к положительному классу, если пользователь поставил ему оценку выше своей средней.
 %Для определённости в задаче классификации принято, что пользователь считает фильм плохим, если предсказанная оценка меньше его средней, и хорошим в обратном случае.
@@ -185,23 +185,23 @@ $\hat{r}_{i}^{mean}$, $\hat{r}_{i}^{min}$, $\hat{r}_{i}^{max}$ --- средня�
     {\sqrt{\sum_{i \in I_u \cup I_v}{(r_{ui} - \bar r_u)^2}} 
     \sqrt{\sum_{i \in I_u \cup I_v}{(r_{vi} - \bar r_v)^2}}},\label{eq:equation2}
 \end{equation}
-Предсказанная оценка вычисляется с использованием взвешивания оценок похожих пользователей и стандартизированной оценки:
 
+Предсказанная оценка вычисляется с использованием взвешивания оценок похожих пользователей и стандартизированной оценки:
 \begin{equation}
     r_{ui} = \bar r_u + \sigma_u \frac
     {\sum_{u' \in U_u}{sim(u, u')\frac{(r_{u'i} - \bar r_{u'})}{\sigma_{u'}}}}
-    {\sum_{u' \in U_u}{sim(u, u')}},\label{eq:equation3}
+    {\sum_{u' \in U_u}{sim(u, u')}}\label{eq:equation3}
 \end{equation}
 
 %\pagebreak
 Совместим user-based и item-based подходы, определяя вклад каждого из них с помощью параметра $\alpha$.
-К чистым user-based и item-based алгоритмам относятся значения $\alpha = 0$ и $\alpha = 1$ соответственно.
+К чистым user-based и item-based алгоритмам относятся значения $\alpha = 0$ и $\alpha = 1$ соответственно:
 
 \begin{equation}\label{eq:memory_hybrid}
 r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{equation}
 
-Оценка качества алгоритма представлена на таблице~\ref{tab:memory_based_quality}
+Оценка качества алгоритма представлена в таблице~\ref{tab:memory_based_quality}:
 \vspace{1em}
 \begin{table}[h]
     \resizebox{\textwidth}{!}{%
@@ -226,7 +226,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
     \label{tab:memory_based_quality}
 \end{table}
 
-Графики кривых при $\alpha = 0.6$ представлены на рисунках~\ref{fig:memory_based_roc} и~\ref{fig:memory_based_pr}:
+Графики кривых при $\alpha = 0.6$ представлены на рисунках~\ref{fig:memory_based_roc},~\ref{fig:memory_based_pr}:
 
 \begin{figure}[h!]
 \centering
@@ -250,11 +250,11 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \vspace{1em}
 \textbf{Alternating Least Squares}
 
-Оценка качества представлена на таблице~\ref{tab:als_quality}
+Оценка качества представлена в таблице~\ref{tab:als_quality}:
 
 \begin{table}[h]
     \centering{
-    \begin{tabular}{ |P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|}
+    \begin{tabular}{ |P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|}
     \hline
     RMSE & MAE & NDCG & F1 & AUC-ROC & AUC-PR \\
     \hline
@@ -265,7 +265,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
     \label{tab:als_quality}
 \end{table}
 
-Графики ROC/PR-кривых приведены на рисунках~\ref{fig:als_roc}, ~\ref{fig:als_pr}:
+Графики ROC/PR-кривых приведены на рисунках~\ref{fig:als_roc},~\ref{fig:als_pr}:
 
 \begin{figure}[h!]
 \centering
@@ -283,7 +283,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{minipage}
 \end{figure}
 
-Значения метрик в процессе обучения представлены на рисунках~\ref{fig:als_real_losses}, ~\ref{fig:als_class_losses}
+Значения метрик в процессе обучения представлены на рисунках~\ref{fig:als_real_losses},~\ref{fig:als_class_losses}:
 
 \begin{figure}[h!]
 \centering
@@ -305,11 +305,11 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \vspace{1em}
 \textbf{Stochastic Gradient Descent}
 
-Оценка качества представлена на таблице~\ref{tab:sgd_quality}
+Оценка качества представлена в таблице~\ref{tab:sgd_quality}:
 
 \begin{table}[h]
     \centering{
-    \begin{tabular}{ |P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|}
+    \begin{tabular}{ |P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|}
     \hline
     RMSE & MAE & NDCG & F1 & AUC-ROC & AUC-PR \\
     \hline
@@ -320,7 +320,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
     \label{tab:sgd_quality}
 \end{table}
 
-Графики ROC/PR-кривых приведены на рисунках~\ref{fig:sgd_roc}, ~\ref{fig:sgd_pr}:
+Графики ROC/PR-кривых приведены на рисунках~\ref{fig:sgd_roc},~\ref{fig:sgd_pr}:
 
 \begin{figure}[h!]
 \centering
@@ -338,7 +338,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{minipage}
 \end{figure}
 
-Значения метрик в процессе обучения представлены на рисунках~\ref{fig:sgd_real_losses}, ~\ref{fig:sgd_class_losses}
+Значения метрик в процессе обучения представлены на рисунках~\ref{fig:sgd_real_losses},~\ref{fig:sgd_class_losses}:
 
 \begin{figure}[h!]
 \centering
@@ -362,11 +362,11 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \textbf{Probabilistic Matrix Factorization}
 
 Оптимизация функции потерь производилась посредством SGD\@.\\
-Оценка качества представлена на таблице~\ref{tab:pmf_sgd_quality}
+Оценка качества представлена в таблице~\ref{tab:pmf_sgd_quality}:
 
 \begin{table}[h]
     \centering{
-    \begin{tabular}{ |P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|}
+    \begin{tabular}{ |P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|}
     \hline
     RMSE & MAE & NDCG & F1 & AUC-ROC & AUC-PR \\
     \hline
@@ -377,7 +377,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
     \label{tab:pmf_sgd_quality}
 \end{table}
 
-Графики ROC/PR-кривых приведены на рисунках~\ref{fig:pmf_sgd_roc}, ~\ref{fig:pmf_sgd_pr}:
+Графики ROC/PR-кривых приведены на рисунках~\ref{fig:pmf_sgd_roc},~\ref{fig:pmf_sgd_pr}:
 
 \begin{figure}[h!]
 \centering
@@ -395,7 +395,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{minipage}
 \end{figure}
 
-Значения метрик в процессе обучения представлены на рисунках~\ref{fig:pmf_sgd_real_losses}, ~\ref{fig:pmf_sgd_class_losses}
+Значения метрик в процессе обучения представлены на рисунках~\ref{fig:pmf_sgd_real_losses},~\ref{fig:pmf_sgd_class_losses}:
 
 \begin{figure}[h!]
 \centering
@@ -417,11 +417,11 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \vspace{1em}
 \textbf{Neural Network}
 
-Оценка качества представлена на таблице~\ref{tab:nn_quality}
+Оценка качества представлена в таблице~\ref{tab:nn_quality}:
 
 \begin{table}[h]
     \centering{
-    \begin{tabular}{ |P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|}
+    \begin{tabular}{ |P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|}
     \hline
     RMSE & MAE & NDCG & F1 & AUC-ROC & AUC-PR \\
     \hline
@@ -432,7 +432,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
     \label{tab:nn_quality}
 \end{table}
 
-Графики ROC/PR-кривых приведены на рисунках~\ref{fig:nn_roc}, ~\ref{fig:nn_pr}:
+Графики ROC/PR-кривых приведены на рисунках~\ref{fig:nn_roc},~\ref{fig:nn_pr}:
 
 \begin{figure}[h!]
 \centering
@@ -450,7 +450,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{minipage}
 \end{figure}
 
-Значения метрик в процессе обучения представлены на рисунках~\ref{fig:nn_real_losses}, ~\ref{fig:nn_class_losses}
+Значения метрик в процессе обучения представлены на рисунках~\ref{fig:nn_real_losses},~\ref{fig:nn_class_losses}:
 
 \begin{figure}[h!]
 \centering
@@ -471,11 +471,11 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \pagebreak
 
 \subsubsection{Content-based}
-Оценка качества представлена на таблице~\ref{tab:content_quality}
+Оценка качества представлена в таблице~\ref{tab:content_quality}:
 
 \begin{table}[h]
     \centering{
-    \begin{tabular}{ |P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|P{4.5em}|}
+    \begin{tabular}{ |P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|P{4.8em}|}
     \hline
     RMSE & MAE & NDCG & F1 & AUC-ROC & AUC-PR \\
     \hline
@@ -486,7 +486,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
     \label{tab:content_quality}
 \end{table}
 
-Графики ROC/PR-кривых приведены на рисунках~\ref{fig:content_roc}, ~\ref{fig:content_pr}:
+Графики ROC/PR-кривых приведены на рисунках~\ref{fig:content_roc},~\ref{fig:content_pr}:
 
 \begin{figure}[h!]
 \centering
@@ -504,7 +504,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{minipage}
 \end{figure}
 
-Среднеквадратическая ошибка автоэнкодера в процессе обучения представлена на рисунке~\ref{fig:autoencoder_losses}
+Среднеквадратическая ошибка автоэнкодера в процессе обучения представлена на рисунке~\ref{fig:autoencoder_losses}:
 
 \begin{figure}[h!]
 \centering
@@ -522,12 +522,12 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 Для оценки гибридной модели в качестве коллаборативной модели использовалось SGD-разложение, а в качестве контентной - автоэнкодер, обученный сжимать tf-idf пространство тэгов.
 
 Вклад каждой модели варьироваался посредством параметра $\alpha$.
-К ответам чистых коллаборативной и контентной моделей относятся значения $\alpha = 0$ и $\alpha = 1$ соответственно.
+К ответам чистых коллаборативной и контентной моделей относятся значения $\alpha = 0$ и $\alpha = 1$ соответственно:
 \begin{equation}\label{eq:hybrid_filtering}
 \hat{r}_{ij} = (1 - \alpha)\space SGD(i, j) + \alpha\space C(i, j)
 \end{equation}
 
-Оценка качества алгоритма представлена на таблице~\ref{tab:hybrid_quality}
+Оценка качества алгоритма представлена в таблице~\ref{tab:hybrid_quality}:
 \vspace{1em}
 \begin{table}[h]
     \resizebox{\textwidth}{!}{%
@@ -552,7 +552,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
     \label{tab:hybrid_quality}
 \end{table}
 
-Графики кривых при $\alpha = 0.3$ представлены на рисунках~\ref{fig:hybrid_roc} и~\ref{fig:hybrid_pr}:
+Графики кривых при $\alpha = 0.3$ представлены на рисунках~\ref{fig:hybrid_roc},~\ref{fig:hybrid_pr}:
 
 \begin{figure}[h!]
 \centering
