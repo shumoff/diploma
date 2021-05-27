@@ -6,7 +6,7 @@
 Однако, в некоторых случаях одной из них может отдаваться предпочтение в зависимости от данных.
 
 \vspace{1em}
-\textbf{Mean Absolute Error}
+\textbf{Mean Absolute Error (MAE)}
 
 Средняя абсолютная ошибка представляет собой сумму абсолютных разностей между прогнозами и фактическими значениями:
 \begin{equation}\label{eq:mae}
@@ -15,7 +15,7 @@ MAE = \frac{1}{|R|} \sum_{u \in U , i \in I} |r_{ui} - \hat{r_{ui}}|
 Основная черта этой метрики состоит в том, что она не никак не реагирует на большую величину конкретных разностей, но даёт целостное представление о точности работы рекомендательной системы.
 
 \vspace{1em}
-\textbf{Root Mean Squared Error}
+\textbf{Root Mean Squared Error (RMSE)}
 
 Среднеквадратическая ошибка усиливает вклад больших ошибок, будучи чувствительной к плохим предсказаниям:
 \begin{equation}\label{eq:rmse}
@@ -71,7 +71,7 @@ F_\beta = (1 + \beta^2) \frac{precision\cdot recall}{\beta^2\cdot precision + re
 
 Вещественные алгоритмы используют пороговое значение для определения принадлежности объекта к какому-либо классу, однако привязка метрики к конкретному порогу не является оптимальным решением.
 Оценить работу алгоритма в общем позволяет площадь под кривой ошибок (Area Under Curve).
-ROC-кривая строится по координатам True Positive Rate (TPR) и False Positive Rate (FPR), соответствующих определённому значению порога.
+ROC-кривая (Receiver Operating Characteristic) строится по координатам True Positive Rate (TPR) и False Positive Rate (FPR), соответствующих определённому значению порога.
 \begin{equation}\label{eq:tpr}
 TPR = \frac{TP}{TP + FN},
 \end{equation}
@@ -79,7 +79,7 @@ TPR = \frac{TP}{TP + FN},
 FPR = \frac{FP}{FP + TN},
 \end{equation}
 где TPR --- полнота, FPR --- доля неверно классифицированных объектов класса нерелевантных объектов.
-PR-кривая аналогично строится по координатам precision и recall.
+PR-кривая (Precision Recall) аналогично строится по координатам precision и recall.
 Примеры кривых приведены ниже на рисунках~\ref{fig:roc_curve_example},~\ref{fig:pr_curve_example}:
 \begin{figure}[h!]
 \centering
@@ -302,7 +302,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{figure}
 
 
-\vspace{1em}
+\pagebreak
 \textbf{Stochastic Gradient Descent}
 
 Оценка качества представлена в таблице~\ref{tab:sgd_quality}:
@@ -358,7 +358,6 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 
 \pagebreak
 
-\vspace{1em}
 \textbf{Probabilistic Matrix Factorization}
 
 Оптимизация функции потерь производилась посредством SGD\@.\\
@@ -414,7 +413,7 @@ r_{ui} = (1 - \alpha)\space UB(u, i) + \alpha\space IB(u,i)
 \end{figure}
 
 
-\vspace{1em}
+\pagebreak
 \textbf{Neural Network}
 
 Оценка качества представлена в таблице~\ref{tab:nn_quality}:
